@@ -1,6 +1,6 @@
 # 排除不必要的目录和文件
 node_modules/
-containers/
+common/
 components/
 coverage/
 build/
