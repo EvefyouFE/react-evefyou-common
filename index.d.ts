@@ -1,7 +1,4 @@
-import { KeyItem } from 'react-evefyou-hooks';
 import { default as moment_2 } from 'moment';
-import { default as React_2 } from 'react';
-import { Recordable as Recordable_2 } from 'react-evefyou-hooks';
 
 export declare function addClass(element: HTMLElement, className: string): void;
 
@@ -94,12 +91,6 @@ export declare function removeClass(element: HTMLElement, className: string): vo
 
 export declare type SecondElement<T extends readonly any[]> = T extends readonly [any, infer Second, ...any[]] ? Second : never;
 
-export declare interface TabItem extends KeyItem<string> {
-    label: React_2.ReactNode;
-    children: React_2.ReactNode;
-    closeIcon: React_2.ReactNode;
-}
-
 export declare type Tail<T extends readonly any[]> = T extends readonly [any, ...infer Rest] ? Rest : never;
 
 export declare type ThirdElement<T extends readonly any[]> = T extends readonly [any, any, infer Third, ...any[]] ? Third : never;
@@ -123,17 +114,13 @@ export declare function useDesign(scope: string, prefixCls?: string): {
     prefixVar: string;
 };
 
-export declare function useNativeProps<T extends Recordable_2>(props: T, options?: UseNativePropsOptions): T;
+export declare function useNativeProps<T extends Recordable>(props: T, options?: UseNativePropsOptions): T;
 
 declare interface UseNativePropsOptions {
     excludeListeners?: boolean;
     excludeKeys?: string[];
     excludeDefaultKeys?: boolean;
 }
-
-export declare function useTabs(): {
-    getTabItem: (key: string, locale: string, title?: string, children?: React_2.ReactNode) => TabItem;
-};
 
 export declare function uuid(): string;
 
