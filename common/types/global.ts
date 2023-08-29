@@ -79,3 +79,11 @@ export type Union<U = any, T = any> = {
 
 export type Value = string | number | object | Recordable
 
+export type PropsWithCls<P = unknown> = P & {
+  className?: string | undefined;
+};
+
+export type PropsWithChildrenCls<P = unknown> = P & {
+  children?: React.ReactNode | undefined;
+  className?: string | undefined;
+};

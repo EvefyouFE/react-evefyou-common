@@ -104,6 +104,15 @@ export declare type PropName<V = any, N extends string = string> = {
     [K in N]: V;
 };
 
+export declare type PropsWithChildrenCls<P = unknown> = P & {
+    children?: React.ReactNode | undefined;
+    className?: string | undefined;
+};
+
+export declare type PropsWithCls<P = unknown> = P & {
+    className?: string | undefined;
+};
+
 export declare type Recordable<T = any> = Record<string, T>;
 
 export declare function removeClass(element: HTMLElement, className: string): void;
