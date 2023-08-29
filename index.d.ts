@@ -1,4 +1,8 @@
+import { IntlShape } from 'react-intl';
+import { MessageDescriptor } from 'react-intl';
 import { default as moment_2 } from 'moment';
+import { PrimitiveType } from 'react-intl';
+import { default as React_2 } from 'react';
 
 export declare function addClass(element: HTMLElement, className: string): void;
 
@@ -27,9 +31,15 @@ export declare interface Fn<T = any, R = T> {
     (...arg: T[]): R;
 }
 
+export declare function formatBaseById<ID = string>(id: ID, values?: MessageValues): React_2.ReactNode;
+
+export declare function formatBaseMessage<ID = string>({ id, values }: MessageProps<ID>): React_2.ReactNode;
+
 export declare function formatToDate(date?: moment_2.MomentInput, format?: string): string;
 
 export declare function formatToDateTime(date?: moment_2.MomentInput, format?: string): string;
+
+declare type FormatXMLElementFn<T, R = string | T | (string | T)[]> = (parts: Array<string | T>) => R;
 
 export declare type FourthElement<T extends readonly any[]> = T extends readonly [any, any, any, infer Fourth, ...any[]] ? Fourth : never;
 
@@ -73,6 +83,15 @@ export declare type IsStringLiteralUnion<T> = string extends T ? false : true;
 
 export declare type LastElement<T extends readonly any[]> = T extends readonly [...any[], infer Last] ? Last : never;
 
+export declare type LocaleFormatMessageProps<ID = string> = (descriptor: MessageProps<ID>, values?: MessageValues) => string;
+
+export declare interface MessageProps<ID = string> extends Omit<MessageDescriptor, 'id'> {
+    id: ID;
+    values?: MessageValues;
+}
+
+export declare type MessageValues = Record<string, React_2.ReactNode | PrimitiveType | FormatXMLElementFn<React_2.ReactNode, React_2.ReactNode>>;
+
 export declare type NestedPropType<KS extends readonly any[], O> = IsObject<O> extends true ? FirstElement<KS> extends keyof O ? IsEmptyArray<Tail<KS>> extends true ? O[FirstElement<KS>] : O[FirstElement<KS>] extends Nullable<infer NO> ? NestedPropType<Tail<KS>, NO> : NestedPropType<Tail<KS>, O[FirstElement<KS>]> : never : O;
 
 export declare type Nullable<T> = T | null;
@@ -108,6 +127,11 @@ export declare type Union<U = any, T = any> = {
 };
 
 export declare type UnwrapNullable<T> = T extends Nullable<infer O> ? O : T;
+
+export declare const useBaseLocale: <ID = string>() => Omit<IntlShape, "formatMessage"> & {
+    formatMessage: LocaleFormatMessageProps<ID>;
+    formatById: (id: ID, values?: MessageValues) => string;
+};
 
 export declare function useDesign(scope: string, prefixCls?: string): {
     prefixCls: string;
