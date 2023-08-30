@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -62,10 +62,12 @@
     "react-dom": ">=18.2.0",
     "uuid": ">=9.0.0",
     "react-intl": ">=6.4.4",
+    "ramda": ">=0.29.0",
     "moment": ">=2.29.4"
   },
   "devDependencies": {
     "@types/node": "^20.5.1",
+    "@types/ramda": "^0.29.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@types/uuid": "^9.0.1",
