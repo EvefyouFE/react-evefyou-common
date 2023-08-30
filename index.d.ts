@@ -1,12 +1,12 @@
+import { default as default_2 } from 'react';
+import { default as default_3 } from 'moment';
 import { IntlShape } from 'react-intl';
 import { MessageDescriptor } from 'react-intl';
-import { default as moment_2 } from 'moment';
 import { PrimitiveType } from 'react-intl';
-import { default as React_2 } from 'react';
 
 export declare function addClass(element: HTMLElement, className: string): void;
 
-export declare const dateUtil: typeof moment_2;
+export declare const dateUtil: typeof default_3;
 
 export declare type ExtractNestedKeys<T, Excludes = 'children', UWT = UnwrapNullable<T>> = IsAny<UWT> extends true ? never : IsArray<UWT> extends true ? never : UWT extends {
     [key: string]: string | number | object | undefined;
@@ -31,13 +31,13 @@ export declare interface Fn<T = any, R = T> {
     (...arg: T[]): R;
 }
 
-export declare function formatBaseById<ID = string>(id: ID, values?: MessageValues): React_2.ReactNode;
+export declare function formatBaseById<ID = string>(id: ID, values?: MessageValues): default_2.ReactNode;
 
-export declare function formatBaseMessage<ID = string>({ id, values }: MessageProps<ID>): React_2.ReactNode;
+export declare function formatBaseMessage<ID = string>({ id, values }: MessageProps<ID>): default_2.ReactNode;
 
-export declare function formatToDate(date?: moment_2.MomentInput, format?: string): string;
+export declare function formatToDate(date?: default_3.MomentInput, format?: string): string;
 
-export declare function formatToDateTime(date?: moment_2.MomentInput, format?: string): string;
+export declare function formatToDateTime(date?: default_3.MomentInput, format?: string): string;
 
 declare type FormatXMLElementFn<T, R = string | T | (string | T)[]> = (parts: Array<string | T>) => R;
 
@@ -90,7 +90,7 @@ export declare interface MessageProps<ID = string> extends Omit<MessageDescripto
     values?: MessageValues;
 }
 
-export declare type MessageValues = Record<string, React_2.ReactNode | PrimitiveType | FormatXMLElementFn<React_2.ReactNode, React_2.ReactNode>>;
+export declare type MessageValues = Record<string, default_2.ReactNode | PrimitiveType | FormatXMLElementFn<default_2.ReactNode, default_2.ReactNode>>;
 
 export declare type NestedPropType<KS extends readonly any[], O> = IsObject<O> extends true ? FirstElement<KS> extends keyof O ? IsEmptyArray<Tail<KS>> extends true ? O[FirstElement<KS>] : O[FirstElement<KS>] extends Nullable<infer NO> ? NestedPropType<Tail<KS>, NO> : NestedPropType<Tail<KS>, O[FirstElement<KS>]> : never : O;
 
@@ -114,6 +114,8 @@ export declare type PropsWithCls<P = unknown> = P & {
 };
 
 export declare type Recordable<T = any> = Record<string, T>;
+
+declare type Recordable_2<T = any> = Record<string, T>;
 
 export declare function removeClass(element: HTMLElement, className: string): void;
 
@@ -147,7 +149,7 @@ export declare function useDesign(scope: string, prefixCls?: string): {
     prefixVar: string;
 };
 
-export declare function useNativeProps<T extends Recordable>(props: T, options?: UseNativePropsOptions): T;
+export declare function useNativeProps<T extends Recordable_2>(props: T, options?: UseNativePropsOptions): T;
 
 declare interface UseNativePropsOptions {
     excludeListeners?: boolean;

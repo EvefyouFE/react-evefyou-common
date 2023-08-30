@@ -24,12 +24,29 @@ const entries = {
   'index': pathResolve('common/index.ts'),
 }
 
+const manualModules = ['utils', 'hooks']
+
 export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
     dts({
-      rollupTypes: true
+      rollupTypes: true,
+      afterBuild: () => {
+        const directoryPath = '.';
+        const regexToDelete = /\w+\.d\.ts$/;
+        fs.readdirSync(directoryPath).forEach((file) => {
+          const filePath = path.join(directoryPath, file);
+          if (regexToDelete.test(file) && !file.includes('index.d.ts')) {
+            try {
+              fs.unlinkSync(filePath);
+              console.log(`Deleted file: ${filePath}`);
+            } catch (err) {
+              console.error(`Error deleting file: ${err}`);
+            }
+          }
+        });
+      }
     }),
   ],
   build: {
@@ -39,24 +56,37 @@ export default defineConfig({
     outDir: '.',
     lib: {
       entry: entries,
-      fileName: (format) => `${format}/index.js`,
       name: 'react-evefyou-common',
       formats: ["es", "cjs"],
     },
     rollupOptions: {
+      input: {
+        'index': './common/index.ts',
+        'hooks': './common/hooks/index.ts',
+        'utils': './common/utils/index.ts',
+      },
       output: {
         minifyInternalExports: false,
         manualChunks: (id) => {
-          if (id.includes('hooks/use')) {
-            console.log('hooks', id.split('/hooks/')[1].split('.ts')[0])
-            return 'hooks/'.concat(id.split('/hooks/')[1].split('.ts')[0])
-          }
-          if (id.includes('utils/')) {
-            console.log('utils', id.split('/utils/')[1].split('.ts')[0])
-            return 'utils/'.concat(id.split('/utils/')[1].split('.ts')[0])
+          console.log('id', id)
+          for (const k of manualModules) {
+            if (id.includes(k)) {
+              const name = id.split(k.concat('/'))[1]
+              if (name === 'index.ts') {
+                return k
+              }
+              console.log('name', id, name)
+              if (name.includes('/index.ts')) {
+                return `${k}/${name.split('/index.ts')[0]}`
+              }
+              return `${k}/${name.split('.ts')[0]}`
+            }
           }
         },
         chunkFileNames: () => '[format]/[name]/index.js',
+        entryFileNames: (chunkInfo) => chunkInfo.name.includes('index')
+          ? '[format]/index.js'
+          : '[format]/[name]/index.js'
       },
       external: regexOfPackages
     }
