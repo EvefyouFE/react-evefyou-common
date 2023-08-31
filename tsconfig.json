@@ -27,9 +27,6 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@hooks/*": [
-        "common/hooks/*"
-      ],
       "@utils/*": [
         "common/utils/*"
       ],

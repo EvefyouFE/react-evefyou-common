@@ -154,19 +154,6 @@ export declare const useBaseLocale: <ID = string>() => Omit<IntlShape, "formatMe
     formatById: (id: ID, values?: MessageValues) => string;
 };
 
-export declare function useDesign(scope: string, prefixCls?: string): {
-    prefixCls: string;
-    prefixVar: string;
-};
-
-export declare function useNativeProps<T extends Recordable>(props: T, options?: UseNativePropsOptions): T;
-
-declare interface UseNativePropsOptions {
-    excludeListeners?: boolean;
-    excludeKeys?: string[];
-    excludeDefaultKeys?: boolean;
-}
-
 export declare function uuid(): string;
 
 export declare type Value = string | number | object | Recordable;

@@ -62,7 +62,6 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'index': './common/index.ts',
-        'hooks': './common/hooks/index.ts',
         'utils': './common/utils/index.ts',
       },
       output: {

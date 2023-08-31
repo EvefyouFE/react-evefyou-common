@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -10,11 +10,6 @@
     ".": {
       "require": "./cjs/index.js",
       "import": "./es/index.js",
-      "types": "./index.d.ts"
-    },
-    "./hooks": {
-      "require": "./cjs/hooks/index.js",
-      "import": "./es/hooks/index.js",
       "types": "./index.d.ts"
     },
     "./utils": {
