@@ -1,5 +1,5 @@
 import { isEmpty } from "ramda"
-import { TreeList, TreeNode, Value } from "../types";
+import { TreeList, TreeNode, Value } from "../types/global";
 
 /*
  * @Author: EvefyouFE/evef

@@ -7,4 +7,4 @@
  * Copyright (c) 2023 by EvefyouFE/evef, All Rights Reserved. 
  */
 export * from './utils'
-export * from './types'
+export * from './types/global'

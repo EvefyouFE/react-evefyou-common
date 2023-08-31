@@ -12,7 +12,7 @@ import path from "path";
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import pkg from './package.json';
-import fs from 'fs';
+import { always, concat, equals, flip, head, includes, isNil, isNotNil, last, not, pipe, reject, split, useWith, when } from "ramda";
 
 const pathResolve = (v: string) => path.resolve(__dirname, v)
 
@@ -22,6 +22,7 @@ const regexOfPackages = externalPackages
 
 const entries = {
   'index': pathResolve('common/index.ts'),
+  'utils/index': pathResolve('common/utils/index.ts'),
 }
 
 const manualModules = ['utils', 'hooks']
@@ -31,22 +32,8 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     dts({
-      rollupTypes: true,
-      afterBuild: () => {
-        const directoryPath = '.';
-        const regexToDelete = /\w+\.d\.ts$/;
-        fs.readdirSync(directoryPath).forEach((file) => {
-          const filePath = path.join(directoryPath, file);
-          if (regexToDelete.test(file) && !file.includes('index.d.ts')) {
-            try {
-              fs.unlinkSync(filePath);
-              console.log(`Deleted file: ${filePath}`);
-            } catch (err) {
-              console.error(`Error deleting file: ${err}`);
-            }
-          }
-        });
-      }
+      outDir: ['es', 'cjs'],
+      rollupTypes: true
     }),
   ],
   build: {
@@ -60,32 +47,26 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      input: {
-        'index': './common/index.ts',
-        'utils': './common/utils/index.ts',
-      },
       output: {
         minifyInternalExports: false,
         manualChunks: (id) => {
-          console.log('id', id)
-          for (const k of manualModules) {
-            if (id.includes(k)) {
-              const name = id.split(k.concat('/'))[1]
-              if (name === 'index.ts') {
-                return k
-              }
-              console.log('name', id, name)
-              if (name.includes('/index.ts')) {
-                return `${k}/${name.split('/index.ts')[0]}`
-              }
-              return `${k}/${name.split('.ts')[0]}`
-            }
-          }
+          const name = pipe(
+            split('common/'),
+            last,
+            when(includes('types'), always(undefined)),
+            when(isNotNil, pipe(
+              split('.ts'),
+              head,
+              when(pipe(
+                includes('index'),
+                not
+              ), s => s.concat('/index'))
+            ))
+          )(id) as string
+          return name
         },
-        chunkFileNames: () => '[format]/[name]/index.js',
-        entryFileNames: (chunkInfo) => chunkInfo.name.includes('index')
-          ? '[format]/index.js'
-          : '[format]/[name]/index.js'
+        chunkFileNames: '[format]/[name].js',
+        entryFileNames: '[format]/[name].js'
       },
       external: regexOfPackages
     }

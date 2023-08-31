@@ -7,7 +7,7 @@
  * Copyright (c) 2023 by EvefyouFE/evef, All Rights Reserved. 
  */
 import { clone, equals, is, mergeDeepRight } from 'ramda';
-import { Recordable } from "../types";
+import { Recordable } from "../types/global";
 
 export function deepMergeObjectByKeys(
   keys: readonly any[],

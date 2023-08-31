@@ -1,27 +1,26 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
   "module": "./es/index.js",
-  "types": "./index.d.ts",
+  "types": "./es/index.d.ts",
   "exports": {
     ".": {
       "require": "./cjs/index.js",
       "import": "./es/index.js",
-      "types": "./index.d.ts"
+      "types": "./es/index.d.ts"
     },
     "./utils": {
       "require": "./cjs/utils/index.js",
       "import": "./es/utils/index.js",
-      "types": "./index.d.ts"
+      "types": "./es/utils/index.d.ts"
     }
   },
   "files": [
     "cjs",
-    "es",
-    "index.d.ts"
+    "es"
   ],
   "scripts": {
     "dev": "vite",
