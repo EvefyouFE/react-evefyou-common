@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -24,8 +24,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:tsc": "tsc",
+    "build": "tsup common/index.ts --dts --format=esm,cjs && vite build",
+    "build:tsc": "tsup common/index.ts --dts",
     "clean": "rimraf node_modules",
     "build:space": "tsc && cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build",
     "clean:cache": "rimraf node_modules/.cache/ && rimraf node_modules/.vite",
@@ -52,12 +52,12 @@
   },
   "homepage": "https://github.com/EvefyouFE/react-evefyou-common#readme",
   "peerDependencies": {
+    "moment": ">=2.29.4",
+    "ramda": ">=0.29.0",
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0",
-    "uuid": ">=9.0.0",
     "react-intl": ">=6.4.4",
-    "ramda": ">=0.29.0",
-    "moment": ">=2.29.4"
+    "uuid": ">=9.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.5.1",
@@ -74,6 +74,7 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "rimraf": "^5.0.1",
     "tslib": "^2.6.1",
+    "tsup": "^7.2.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.5.1",
