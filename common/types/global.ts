@@ -1,13 +1,5 @@
 
-export type Recordable<T = any> = Record<string, T>;
 export type Nullable<T> = T | null;
-export type TreeList<
-  T,
-  IDN extends string = 'id',
-  PIDN extends string = 'pId',
-  ID extends string | number = number
-> = { [Key in IDN | PIDN]: ID; } & T;
-export type TreeNode<T> = { children?: TreeNode<T>[]; } & T;
 export type PropName<V = any, N extends string = string> = {
   [K in N]: V;
 }
@@ -76,8 +68,6 @@ export interface PromiseFn<T = any, R = T> {
 export type Union<U = any, T = any> = {
   [key in keyof (U & T)]: (U & T)[key];
 };
-
-export type Value = string | number | object | Recordable
 
 export type PropsWithCls<P = unknown> = P & {
   className?: string | undefined;

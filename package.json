@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -9,13 +9,79 @@
   "exports": {
     ".": {
       "require": "./cjs/index.js",
-      "import": "./es/index.js",
-      "types": "./es/index.d.ts"
+      "import": "./es/index.js"
+    },
+    "./locale": {
+      "require": "./cjs/locale/index.js",
+      "import": "./es/locale/index.js"
     },
     "./utils": {
       "require": "./cjs/utils/index.js",
-      "import": "./es/utils/index.js",
-      "types": "./es/utils/index.d.ts"
+      "import": "./es/utils/index.js"
+    },
+    "./utils/date": {
+      "require": "./cjs/utils/date/index.js",
+      "import": "./es/utils/date/index.js"
+    },
+    "./utils/dom": {
+      "require": "./cjs/utils/dom/index.js",
+      "import": "./es/utils/dom/index.js"
+    },
+    "./utils/dom/addClass": {
+      "require": "./cjs/dom/utils/addClass/index.js",
+      "import": "./es/dom/utils/addClass/index.js"
+    },
+    "./utils/dom/removeClass": {
+      "require": "./cjs/dom/utils/removeClass/index.js",
+      "import": "./es/dom/utils/removeClass/index.js"
+    },
+    "./utils/dom/getHeight": {
+      "require": "./cjs/dom/utils/getHeight/index.js",
+      "import": "./es/dom/utils/getHeight/index.js"
+    },
+    "./utils/dom/getPopupContainer": {
+      "require": "./cjs/dom/utils/getPopupContainer/index.js",
+      "import": "./es/dom/utils/getPopupContainer/index.js"
+    },
+    "./utils/dom/getViewportOffset": {
+      "require": "./cjs/dom/utils/getViewportOffset/index.js",
+      "import": "./es/dom/utils/getViewportOffset/index.js"
+    },
+    "./utils/generate": {
+      "require": "./cjs/utils/generate/index.js",
+      "import": "./es/utils/generate/index.js"
+    },
+    "./utils/generate/uuid": {
+      "require": "./cjs/generate/utils/uuid/index.js",
+      "import": "./es/generate/utils/uuid/index.js"
+    },
+    "./utils/list": {
+      "require": "./cjs/utils/list/index.js",
+      "import": "./es/utils/list/index.js"
+    },
+    "./utils/list/convertListToTree": {
+      "require": "./cjs/list/utils/convertListToTree/index.js",
+      "import": "./es/list/utils/convertListToTree/index.js"
+    },
+    "./utils/list/isSubList": {
+      "require": "./cjs/list/utils/isSubList/index.js",
+      "import": "./es/list/utils/isSubList/index.js"
+    },
+    "./utils/object": {
+      "require": "./cjs/utils/object/index.js",
+      "import": "./es/utils/object/index.js"
+    },
+    "./utils/object/deepCompareObj": {
+      "require": "./cjs/object/utils/deepCompareObj/index.js",
+      "import": "./es/object/utils/deepCompareObj/index.js"
+    },
+    "./utils/object/deepMergeObjectByKeys": {
+      "require": "./cjs/object/utils/deepMergeObjectByKeys/index.js",
+      "import": "./es/object/utils/deepMergeObjectByKeys/index.js"
+    },
+    "./utils/object/deepSetObjectByKeys": {
+      "require": "./cjs/object/utils/deepSetObjectByKeys/index.js",
+      "import": "./es/object/utils/deepSetObjectByKeys/index.js"
     }
   },
   "files": [
@@ -24,7 +90,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsup common/index.ts --dts --format=esm,cjs && vite build",
+    "build": "tsc && vite build",
     "build:tsc": "tsup common/index.ts --dts",
     "clean": "rimraf node_modules",
     "build:space": "tsc && cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build",
@@ -38,10 +104,10 @@
     "url": "git+https://github.com/EvefyouFE/react-evefyou-common.git"
   },
   "keywords": [
-    "react",
     "js",
+    "react",
+    "locale",
     "common",
-    "hooks",
     "utils",
     "evefyou"
   ],
@@ -51,6 +117,9 @@
     "url": "https://github.com/EvefyouFE/react-evefyou-common/issues"
   },
   "homepage": "https://github.com/EvefyouFE/react-evefyou-common#readme",
+  "dependencies": {
+    "js-evefyou-utils": "^1.0.1"
+  },
   "peerDependencies": {
     "moment": ">=2.29.4",
     "ramda": ">=0.29.0",

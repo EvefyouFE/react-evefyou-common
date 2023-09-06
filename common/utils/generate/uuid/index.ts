@@ -1,0 +1,1 @@
+export * from 'js-evefyou-utils/generate/uuid'
