@@ -11,7 +11,7 @@ import path from "path";
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import pkg from './package.json';
-import { anyPass, equals, filter, last, not, pipe, split } from "ramda";
+import { and, any, anyPass, equals, filter, flip, includes, last, not, pipe, split, test } from "ramda";
 import fs from 'fs';
 
 const libName = 'common'
@@ -19,6 +19,8 @@ const libFullName = `react-evefyou-${libName}`
 
 const pathResolve = (v: string) => path.resolve(__dirname, v)
 
+
+const depPackages = [...Object.keys(pkg.dependencies)]
 const externalPackages = [...Object.keys(pkg.peerDependencies)]
 const regexOfPackages = externalPackages
   .map(packageName => new RegExp(`^${packageName}(\\/.*)?`));
@@ -129,7 +131,12 @@ export default defineConfig({
         entryFileNames: (chunkInfo) => chunkInfo.name === 'index'
           ? '[format]/[name].js' : '[format]/[name]/index.js'
       },
-      external: regexOfPackages
+      external: (id) => {
+        return and(
+          not(any(flip(includes)(id as any), depPackages)),
+          any(flip(test)(id), regexOfPackages)
+        )
+      }
     }
   }
 })
