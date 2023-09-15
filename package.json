@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -28,60 +28,60 @@
       "import": "./es/utils/dom/index.js"
     },
     "./utils/dom/addClass": {
-      "require": "./cjs/dom/utils/addClass/index.js",
-      "import": "./es/dom/utils/addClass/index.js"
+      "require": "./cjs/utils/dom/addClass/index.js",
+      "import": "./es/utils/dom/addClass/index.js"
     },
     "./utils/dom/removeClass": {
-      "require": "./cjs/dom/utils/removeClass/index.js",
-      "import": "./es/dom/utils/removeClass/index.js"
+      "require": "./cjs/utils/dom/removeClass/index.js",
+      "import": "./es/utils/dom/removeClass/index.js"
     },
     "./utils/dom/getHeight": {
-      "require": "./cjs/dom/utils/getHeight/index.js",
-      "import": "./es/dom/utils/getHeight/index.js"
+      "require": "./cjs/utils/dom/getHeight/index.js",
+      "import": "./es/utils/dom/getHeight/index.js"
     },
     "./utils/dom/getPopupContainer": {
-      "require": "./cjs/dom/utils/getPopupContainer/index.js",
-      "import": "./es/dom/utils/getPopupContainer/index.js"
+      "require": "./cjs/utils/dom/getPopupContainer/index.js",
+      "import": "./es/utils/dom/getPopupContainer/index.js"
     },
     "./utils/dom/getViewportOffset": {
-      "require": "./cjs/dom/utils/getViewportOffset/index.js",
-      "import": "./es/dom/utils/getViewportOffset/index.js"
+      "require": "./cjs/utils/dom/getViewportOffset/index.js",
+      "import": "./es/utils/dom/getViewportOffset/index.js"
     },
     "./utils/generate": {
       "require": "./cjs/utils/generate/index.js",
       "import": "./es/utils/generate/index.js"
     },
     "./utils/generate/uuid": {
-      "require": "./cjs/generate/utils/uuid/index.js",
-      "import": "./es/generate/utils/uuid/index.js"
+      "require": "./cjs/utils/generate/uuid/index.js",
+      "import": "./es/utils/generate/uuid/index.js"
     },
     "./utils/list": {
       "require": "./cjs/utils/list/index.js",
       "import": "./es/utils/list/index.js"
     },
     "./utils/list/convertListToTree": {
-      "require": "./cjs/list/utils/convertListToTree/index.js",
-      "import": "./es/list/utils/convertListToTree/index.js"
+      "require": "./cjs/utils/list/convertListToTree/index.js",
+      "import": "./es/utils/list/convertListToTree/index.js"
     },
     "./utils/list/isSubList": {
-      "require": "./cjs/list/utils/isSubList/index.js",
-      "import": "./es/list/utils/isSubList/index.js"
+      "require": "./cjs/utils/list/isSubList/index.js",
+      "import": "./es/utils/list/isSubList/index.js"
     },
     "./utils/object": {
       "require": "./cjs/utils/object/index.js",
       "import": "./es/utils/object/index.js"
     },
     "./utils/object/deepCompareObj": {
-      "require": "./cjs/object/utils/deepCompareObj/index.js",
-      "import": "./es/object/utils/deepCompareObj/index.js"
+      "require": "./cjs/utils/object/deepCompareObj/index.js",
+      "import": "./es/utils/object/deepCompareObj/index.js"
     },
     "./utils/object/deepMergeObjectByKeys": {
-      "require": "./cjs/object/utils/deepMergeObjectByKeys/index.js",
-      "import": "./es/object/utils/deepMergeObjectByKeys/index.js"
+      "require": "./cjs/utils/object/deepMergeObjectByKeys/index.js",
+      "import": "./es/utils/object/deepMergeObjectByKeys/index.js"
     },
     "./utils/object/deepSetObjectByKeys": {
-      "require": "./cjs/object/utils/deepSetObjectByKeys/index.js",
-      "import": "./es/object/utils/deepSetObjectByKeys/index.js"
+      "require": "./cjs/utils/object/deepSetObjectByKeys/index.js",
+      "import": "./es/utils/object/deepSetObjectByKeys/index.js"
     }
   },
   "files": [
