@@ -1,6 +1,6 @@
 {
   "name": "react-evefyou-common",
-  "version": "0.0.1",
+  "version": "1.0.18",
   "description": "",
   "type": "module",
   "main": "./cjs/index.js",
@@ -118,7 +118,7 @@
   },
   "homepage": "https://github.com/EvefyouFE/react-evefyou-common#readme",
   "dependencies": {
-    "js-evefyou-utils": "^0.0.1"
+    "js-evefyou-utils": "^1.0.2"
   },
   "peerDependencies": {
     "moment": ">=2.29.4",
